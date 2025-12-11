@@ -3,13 +3,13 @@ import { LineChart, Line, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis
 import { Video, Search } from 'lucide-react';
 
 const trendData = [
-  { time: '08:00', '重症医学科': 90, '外科': 85, '儿科': 80 },
-  { time: '09:00', '重症医学科': 92, '外科': 88, '儿科': 78 },
-  { time: '10:00', '重症医学科': 95, '外科': 82, '儿科': 85 },
-  { time: '11:00', '重症医学科': 88, '外科': 90, '儿科': 89 },
-  { time: '12:00', '重症医学科': 85, '外科': 95, '儿科': 92 },
-  { time: '13:00', '重症医学科': 91, '外科': 92, '儿科': 88 },
-  { time: '14:00', '重症医学科': 94, '外科': 88, '儿科': 86 },
+  { time: '08:00', '普外科': 90, '骨科': 85, '泌尿外科': 80 },
+  { time: '09:00', '普外科': 92, '骨科': 88, '泌尿外科': 78 },
+  { time: '10:00', '普外科': 95, '骨科': 82, '泌尿外科': 85 },
+  { time: '11:00', '普外科': 88, '骨科': 90, '泌尿外科': 89 },
+  { time: '12:00', '普外科': 85, '骨科': 95, '泌尿外科': 92 },
+  { time: '13:00', '普外科': 91, '骨科': 92, '泌尿外科': 88 },
+  { time: '14:00', '普外科': 94, '骨科': 88, '泌尿外科': 86 },
 ];
 
 const radarData = [
@@ -31,13 +31,13 @@ export const BottomTrends: React.FC = () => {
             <h3 className="text-slate-800 font-semibold text-sm uppercase tracking-wide">依从率趋势对比</h3>
             <div className="flex space-x-4">
                  <div className="flex items-center text-xs text-slate-500">
-                    <span className="w-3 h-1 bg-blue-500 rounded-full mr-1"></span> 重症医学科
+                    <span className="w-3 h-1 bg-blue-500 rounded-full mr-1"></span> 普外科
                  </div>
                  <div className="flex items-center text-xs text-slate-500">
-                    <span className="w-3 h-1 bg-emerald-500 rounded-full mr-1"></span> 外科
+                    <span className="w-3 h-1 bg-emerald-500 rounded-full mr-1"></span> 骨科
                  </div>
                  <div className="flex items-center text-xs text-slate-500">
-                    <span className="w-3 h-1 bg-purple-500 rounded-full mr-1"></span> 儿科
+                    <span className="w-3 h-1 bg-purple-500 rounded-full mr-1"></span> 泌尿外科
                  </div>
             </div>
         </div>
@@ -51,9 +51,9 @@ export const BottomTrends: React.FC = () => {
                 <Tooltip 
                     contentStyle={{borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'}}
                 />
-                <Line type="monotone" dataKey="重症医学科" stroke="#3b82f6" strokeWidth={2} dot={{r: 3}} activeDot={{r: 5}} />
-                <Line type="monotone" dataKey="外科" stroke="#10b981" strokeWidth={2} dot={{r: 3}} activeDot={{r: 5}} />
-                <Line type="monotone" dataKey="儿科" stroke="#a855f7" strokeWidth={2} dot={{r: 3}} activeDot={{r: 5}} />
+                <Line type="monotone" dataKey="普外科" stroke="#3b82f6" strokeWidth={2} dot={{r: 3}} activeDot={{r: 5}} />
+                <Line type="monotone" dataKey="骨科" stroke="#10b981" strokeWidth={2} dot={{r: 3}} activeDot={{r: 5}} />
+                <Line type="monotone" dataKey="泌尿外科" stroke="#a855f7" strokeWidth={2} dot={{r: 3}} activeDot={{r: 5}} />
             </LineChart>
             </ResponsiveContainer>
         </div>

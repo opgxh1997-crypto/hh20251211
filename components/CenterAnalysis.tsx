@@ -3,12 +3,12 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { Department } from '../types';
 
 const deptData: Department[] = [
-    { id: '1', name: '重症医学科(ICU)', complianceRate: 98, totalWashes: 3400, warningCount: 12 },
-    { id: '2', name: '外科', complianceRate: 95, totalWashes: 2100, warningCount: 45 },
-    { id: '3', name: '儿科', complianceRate: 88, totalWashes: 1200, warningCount: 89 },
-    { id: '4', name: '内科', complianceRate: 82, totalWashes: 1800, warningCount: 130 },
-    { id: '5', name: '急诊科', complianceRate: 76, totalWashes: 4500, warningCount: 420 },
-    { id: '6', name: '神经科', complianceRate: 91, totalWashes: 900, warningCount: 30 },
+    { id: '1', name: '普外科', complianceRate: 98, totalWashes: 3400, warningCount: 12 },
+    { id: '2', name: '骨科', complianceRate: 95, totalWashes: 2100, warningCount: 45 },
+    { id: '3', name: '泌尿外科', complianceRate: 88, totalWashes: 1200, warningCount: 89 },
+    { id: '4', name: '神经外科', complianceRate: 82, totalWashes: 1800, warningCount: 130 },
+    { id: '5', name: '胸外科', complianceRate: 76, totalWashes: 4500, warningCount: 420 },
+    { id: '6', name: '肝胆外科', complianceRate: 91, totalWashes: 900, warningCount: 30 },
 ];
 
 // Sort for visual hierarchy

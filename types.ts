@@ -1,3 +1,4 @@
+
 export interface Metric {
   label: string;
   value: number | string;
@@ -19,7 +20,7 @@ export interface Alert {
   timestamp: string;
   staffName: string;
   department: string;
-  issueType: '未洗手' | '时长不足' | '步骤缺失';
+  issueType: '手部有配饰' | '时长不足' | '步骤缺失';
   severity: 'high' | 'medium' | 'low';
 }
 

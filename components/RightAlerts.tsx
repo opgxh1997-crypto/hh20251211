@@ -3,17 +3,17 @@ import { AlertCircle, Clock, User, ArrowRight } from 'lucide-react';
 import { Alert } from '../types';
 
 const alerts: Alert[] = [
-    { id: '1', timestamp: '10:41 AM', staffName: '张医生', department: '重症医学科', issueType: '未洗手', severity: 'high' },
-    { id: '2', timestamp: '10:38 AM', staffName: '李护士', department: '急诊科', issueType: '时长不足', severity: 'medium' },
-    { id: '3', timestamp: '10:35 AM', staffName: '王护士', department: '儿科', issueType: '步骤缺失', severity: 'medium' },
-    { id: '4', timestamp: '10:30 AM', staffName: '赵技师', department: '外科', issueType: '未洗手', severity: 'high' },
-    { id: '5', timestamp: '10:15 AM', staffName: '刘主任', department: '诊断科', issueType: '未洗手', severity: 'low' },
+    { id: '1', timestamp: '10:41 AM', staffName: '张志远', department: '普外科', issueType: '手部有配饰', severity: 'high' },
+    { id: '2', timestamp: '10:38 AM', staffName: '李晓雯', department: '胸外科', issueType: '时长不足', severity: 'medium' },
+    { id: '3', timestamp: '10:35 AM', staffName: '王建国', department: '泌尿外科', issueType: '步骤缺失', severity: 'medium' },
+    { id: '4', timestamp: '10:30 AM', staffName: '赵雅芝', department: '骨科', issueType: '手部有配饰', severity: 'high' },
+    { id: '5', timestamp: '10:15 AM', staffName: '刘志坚', department: '肝胆外科', issueType: '手部有配饰', severity: 'low' },
 ];
 
 const problemDepts = [
-    { name: '急诊科', issue: '未洗手率高', rate: '76%' },
-    { name: '内科', issue: '洗手时长不足', rate: '82%' },
-    { name: '儿科', issue: '步骤4(弓)缺失', rate: '88%' },
+    { name: '胸外科', issue: '洗手时长不足', rate: '76%' },
+    { name: '神经外科', issue: '洗手时长不足', rate: '82%' },
+    { name: '泌尿外科', issue: '步骤缺失', rate: '88%' },
 ];
 
 export const RightAlerts: React.FC = () => {
@@ -77,7 +77,6 @@ export const RightAlerts: React.FC = () => {
                 </div>
             ))}
         </div>
-        {/* Removed detailed report button */}
       </div>
     </div>
   );

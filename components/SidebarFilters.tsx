@@ -6,7 +6,7 @@ export const SidebarFilters: React.FC = () => {
   const [selectedRange, setSelectedRange] = useState<TimeRange>(TimeRange.TODAY);
   
   const depts = [
-    "全院", "重症医学科 (ICU)", "外科", "儿科", "内科", "急诊科"
+    "全院", "普外科", "骨科", "泌尿外科", "神经外科", "胸外科", "肝胆外科"
   ];
 
   return (
