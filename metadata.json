@@ -1,0 +1,5 @@
+{
+  "name": "手卫生依从性统计分析平台",
+  "description": "医院感染管理综合仪表盘，可视化展示手卫生依从性、趋势及实时预警。",
+  "requestFramePermissions": []
+}
