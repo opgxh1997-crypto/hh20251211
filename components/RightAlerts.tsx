@@ -72,7 +72,7 @@ export const RightAlerts: React.FC = () => {
                     </div>
                     <div className="text-right">
                         <div className="text-lg font-bold text-red-500">{dept.rate}</div>
-                        <div className="text-[10px] text-slate-400 uppercase">依从率</div>
+                        <div className="text-[10px] text-slate-400 uppercase">正确率</div>
                     </div>
                 </div>
             ))}

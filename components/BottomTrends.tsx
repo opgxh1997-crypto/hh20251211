@@ -28,7 +28,7 @@ export const BottomTrends: React.FC = () => {
       {/* Trend Line */}
       <div className="md:col-span-8 bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-col">
         <div className="flex justify-between items-center mb-4">
-            <h3 className="text-slate-800 font-semibold text-sm uppercase tracking-wide">依从率趋势对比</h3>
+            <h3 className="text-slate-800 font-semibold text-sm uppercase tracking-wide">正确率趋势对比</h3>
             <div className="flex space-x-4">
                  <div className="flex items-center text-xs text-slate-500">
                     <span className="w-3 h-1 bg-blue-500 rounded-full mr-1"></span> 普外科

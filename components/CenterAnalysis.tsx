@@ -47,7 +47,7 @@ export const CenterAnalysis: React.FC = () => {
     <div className="flex flex-col gap-4 h-full">
       {/* Department Rankings */}
       <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex-1 min-h-[300px]">
-        <h3 className="text-slate-800 font-semibold mb-4 text-sm uppercase tracking-wide">科室依从率排行榜</h3>
+        <h3 className="text-slate-800 font-semibold mb-4 text-sm uppercase tracking-wide">科室正确率排行榜</h3>
         <ResponsiveContainer width="100%" height="90%">
           <BarChart
             data={sortedData}
@@ -113,7 +113,7 @@ export const CenterAnalysis: React.FC = () => {
                             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block z-20 w-32 p-2 bg-slate-800 text-white text-xs rounded shadow-lg pointer-events-none">
                                 <div className="font-semibold">洗手池 {sink.id}</div>
                                 <div>频次: {sink.usage}</div>
-                                <div>依从率: {sink.rate}%</div>
+                                <div>正确率: {sink.rate}%</div>
                             </div>
                         </div>
                     ))}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip } from 'recharts';
-import { ArrowUp, ArrowDown, Activity, AlertTriangle, CheckCircle } from 'lucide-react';
+import { ArrowUp, ArrowDown, Activity, AlertTriangle, CheckCircle, Users } from 'lucide-react';
 
 const COLORS = ['#10b981', '#e2e8f0']; // Green for success, Gray for background
 
@@ -18,7 +18,7 @@ export const TopOverview: React.FC = () => {
       {/* Compliance Rate - Donut */}
       <div className="md:col-span-3 bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex items-center justify-between">
         <div>
-          <h3 className="text-slate-500 text-sm font-medium mb-1">实时全院依从率</h3>
+          <h3 className="text-slate-500 text-sm font-medium mb-1">实时全院正确率</h3>
           <div className="text-3xl font-bold text-slate-800">{overallRate}%</div>
           <div className="text-xs text-emerald-600 flex items-center mt-1">
             <ArrowUp size={12} className="mr-1" />
@@ -50,7 +50,23 @@ export const TopOverview: React.FC = () => {
       </div>
 
       {/* Stats Cards */}
-      <div className="md:col-span-6 grid grid-cols-3 gap-4">
+      <div className="md:col-span-6 grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* New Card: Today's Total Persons */}
+        <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+            <div className="flex items-start justify-between">
+                <div>
+                    <h3 className="text-slate-500 text-xs font-medium uppercase tracking-wider">今日洗手总人数</h3>
+                    <div className="text-2xl font-bold mt-2">892</div>
+                </div>
+                <div className="p-2 bg-indigo-50 rounded-lg">
+                    <Users size={18} className="text-indigo-500" />
+                </div>
+            </div>
+            <div className="mt-2 h-1 w-full bg-slate-100 rounded-full overflow-hidden">
+                <div className="h-full bg-indigo-500 w-[92%]"></div>
+            </div>
+        </div>
+
         <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
             <div className="flex items-start justify-between">
                 <div>
