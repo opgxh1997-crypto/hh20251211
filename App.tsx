@@ -5,10 +5,11 @@ import { CenterAnalysis } from './components/CenterAnalysis';
 import { RightAlerts } from './components/RightAlerts';
 import { BottomTrends } from './components/BottomTrends';
 import { StatisticalReport } from './components/StatisticalReport';
+import { DeviceManagement } from './components/DeviceManagement';
 import { ShieldCheck, Bell, UserCircle } from 'lucide-react';
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<'dashboard' | 'report'>('dashboard');
+  const [currentView, setCurrentView] = useState<'dashboard' | 'report' | 'devices'>('dashboard');
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-900">
@@ -38,7 +39,12 @@ const App: React.FC = () => {
                 >
                   统计报表
                 </button>
-                <a href="#" className="hover:text-slate-800 transition-colors">设备管理</a>
+                <button 
+                  onClick={() => setCurrentView('devices')}
+                  className={`transition-colors ${currentView === 'devices' ? 'text-blue-600 font-bold' : 'hover:text-slate-800'}`}
+                >
+                  设备管理
+                </button>
                 <a href="#" className="hover:text-slate-800 transition-colors">系统设置</a>
             </nav>
             <div className="h-6 w-px bg-slate-200"></div>
@@ -62,7 +68,7 @@ const App: React.FC = () => {
       <main className="flex-1 p-4 md:p-6 overflow-hidden">
         <div className="max-w-[1920px] mx-auto h-full flex flex-col">
             
-            {currentView === 'dashboard' ? (
+            {currentView === 'dashboard' && (
               <>
                 {/* Top Stats */}
                 <TopOverview />
@@ -88,8 +94,14 @@ const App: React.FC = () => {
                 {/* Bottom Trends */}
                 <BottomTrends />
               </>
-            ) : (
+            )}
+
+            {currentView === 'report' && (
               <StatisticalReport />
+            )}
+
+            {currentView === 'devices' && (
+              <DeviceManagement />
             )}
         </div>
       </main>

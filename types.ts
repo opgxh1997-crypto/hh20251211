@@ -49,3 +49,43 @@ export enum Role {
   MEDICAL_ASSISTANT = '医辅人员',
   OTHER = '其他'
 }
+
+// Device Management Types
+export enum DeviceStatus {
+  ONLINE = 'online',
+  OFFLINE = 'offline',
+  FAULT = 'fault'
+}
+
+export interface Device {
+  id: string;
+  name: string;
+  roomId: string; // 'unmatched' for unmatched devices
+  status: DeviceStatus;
+  location: string;
+  type: string;
+  sn: string;
+  installDate: string;
+  lastActive: string;
+  network: string;
+  storageUsed: number; // GB
+  storageTotal: number; // GB
+  cameraStatus: 'normal' | 'fault';
+  aiStatus: 'normal' | 'fault';
+}
+
+export interface OperatingRoom {
+  id: string;
+  name: string;
+}
+
+export interface WashRecord {
+  id: string;
+  deviceId: string;
+  timestamp: string;
+  personName: string;
+  role: string;
+  duration: number; // seconds
+  isCompliant: boolean;
+  alertReason?: string;
+}
