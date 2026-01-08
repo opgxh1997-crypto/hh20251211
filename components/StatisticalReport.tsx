@@ -5,14 +5,12 @@ import { Role } from '../types';
 // Mock data for the report
 const generateReportData = () => {
   const depts = ["普外科", "骨科", "泌尿外科", "神经外科", "胸外科", "肝胆外科"];
-  const roles = Object.values(Role);
   const names = ["张", "李", "王", "赵", "刘", "陈", "杨", "黄", "周", "吴"];
   const givenNames = ["志远", "晓雯", "建国", "雅芝", "志坚", "伟", "芳", "敏", "杰", "强"];
 
   // Changed length from 25 to 10
   return Array.from({ length: 10 }, (_, i) => {
     const dept = depts[i % depts.length];
-    const role = roles[i % roles.length];
     const name = names[i % names.length] + givenNames[i % givenNames.length];
     const totalWashes = 20 + Math.floor(Math.random() * 80);
     const complianceRate = 60 + Math.floor(Math.random() * 40);
@@ -27,7 +25,6 @@ const generateReportData = () => {
       id: i,
       name,
       dept,
-      role,
       totalWashes,
       validWashes: Math.floor(totalWashes * (complianceRate / 100)),
       complianceRate,
@@ -40,6 +37,7 @@ const generateReportData = () => {
 const reportData = generateReportData();
 
 // Mock media data for the modal with real image placeholders
+// Adding an "expired" entry for demonstration
 const mockMediaList = [
     { 
         id: 1, 
@@ -47,6 +45,7 @@ const mockMediaList = [
         date: '2023-10-27 10:42', 
         issue: '洗手时长不足', 
         duration: '00:24',
+        expired: false,
     },
     { 
         id: 2, 
@@ -54,6 +53,7 @@ const mockMediaList = [
         date: '2023-10-26 15:30', 
         issue: '手部有配饰', 
         duration: '-',
+        expired: false,
     },
     { 
         id: 3, 
@@ -61,13 +61,15 @@ const mockMediaList = [
         date: '2023-10-25 09:15', 
         issue: '步骤缺失', 
         duration: '00:45',
+        expired: false,
     },
     { 
         id: 4, 
         type: 'video', 
-        date: '2023-10-24 11:20', 
+        date: '2023-09-01 11:20', 
         issue: '洗手时长不足', 
         duration: '00:18',
+        expired: true, // Mock expired
     },
 ];
 
@@ -106,18 +108,7 @@ export const StatisticalReport: React.FC = () => {
             <Filter size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
         </div>
 
-        {/* Role Filter */}
-        <div className="relative">
-            <select className="pl-3 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-600 appearance-none focus:ring-2 focus:ring-blue-500 focus:outline-none hover:bg-slate-100 cursor-pointer">
-                <option>所有角色</option>
-                <option>医生</option>
-                <option>护士</option>
-                <option>医辅人员</option>
-            </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-            </div>
-        </div>
+        {/* Removed Role Filter */}
 
         {/* Search - Shortened Width */}
         <div className="relative w-56">
@@ -149,7 +140,7 @@ export const StatisticalReport: React.FC = () => {
                     <tr>
                         <th scope="col" className="px-6 py-3 font-semibold">姓名</th>
                         <th scope="col" className="px-6 py-3 font-semibold">科室</th>
-                        <th scope="col" className="px-6 py-3 font-semibold">角色</th>
+                        {/* Removed Role Column */}
                         <th scope="col" className="px-6 py-3 font-semibold text-center">
                             <div className="flex items-center justify-center cursor-pointer hover:text-slate-700">
                                 洗手总数 <ArrowUpDown size={12} className="ml-1" />
@@ -171,9 +162,6 @@ export const StatisticalReport: React.FC = () => {
                         <tr key={row.id} className="bg-white border-b border-slate-50 hover:bg-slate-50 transition-colors">
                             <td className="px-6 py-4 font-medium text-slate-900">{row.name}</td>
                             <td className="px-6 py-4">{row.dept}</td>
-                            <td className="px-6 py-4">
-                                <span className="px-2 py-1 rounded bg-slate-100 text-xs text-slate-600">{row.role}</span>
-                            </td>
                             <td className="px-6 py-4 text-center">{row.totalWashes}</td>
                             <td className="px-6 py-4 text-center">{row.validWashes}</td>
                             <td className="px-6 py-4 text-center">
@@ -246,7 +234,7 @@ export const StatisticalReport: React.FC = () => {
                         </div>
                         <div>
                             <h3 className="text-lg font-bold text-slate-800">{selectedItem.name} - 手卫生详情档案</h3>
-                            <p className="text-xs text-slate-500">{selectedItem.dept} | {selectedItem.role}</p>
+                            <p className="text-xs text-slate-500">{selectedItem.dept}</p>
                         </div>
                     </div>
                     <button 
@@ -369,8 +357,13 @@ export const StatisticalReport: React.FC = () => {
                                             onClick={() => setActiveMediaId(item.id)}
                                             className={`p-3 border-b border-slate-100 cursor-pointer transition-colors flex items-start gap-3 hover:bg-white ${activeMediaId === item.id ? 'bg-white border-l-4 border-l-blue-500 shadow-sm' : 'border-l-4 border-l-transparent'}`}
                                         >
-                                            <div className="w-16 h-12 bg-slate-200 rounded shrink-0 flex items-center justify-center text-slate-400">
+                                            <div className="w-16 h-12 bg-slate-200 rounded shrink-0 flex items-center justify-center text-slate-400 relative overflow-hidden">
                                                 {item.type === 'video' ? <Film size={16} /> : <FileImage size={16} />}
+                                                {item.expired && (
+                                                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-[10px] text-white font-bold">
+                                                        过期
+                                                    </div>
+                                                )}
                                             </div>
                                             <div className="flex-1 min-w-0">
                                                 <div className="text-sm font-medium text-slate-800 truncate">{item.issue}</div>
@@ -387,20 +380,27 @@ export const StatisticalReport: React.FC = () => {
                             {/* Right: Player / Preview */}
                             <div className="w-full md:w-2/3 bg-black rounded-lg overflow-hidden relative group shadow-md flex flex-col">
                                 <div className="flex-1 relative bg-slate-900 flex items-center justify-center">
-                                    {/* Placeholder Content */}
-                                    <div className="text-center text-white/80">
-                                        {activeMedia.type === 'video' ? (
-                                            <>
-                                                <PlayCircle size={56} className="mx-auto mb-3 opacity-80 group-hover:scale-110 transition-transform cursor-pointer hover:text-blue-400" />
-                                                <p className="text-sm font-medium">播放视频</p>
-                                            </>
-                                        ) : (
-                                            <>
-                                                 <ImageIcon size={56} className="mx-auto mb-3 opacity-50" />
-                                                 <p className="text-sm font-medium">查看高清抓拍</p>
-                                            </>
-                                        )}
-                                    </div>
+                                    {activeMedia.expired ? (
+                                         <div className="text-center text-white/60 flex flex-col items-center">
+                                            <AlertTriangle size={48} className="mb-3 text-amber-500" />
+                                            <p className="text-lg font-semibold">视频已过期</p>
+                                            <p className="text-sm mt-1">仅支持查看最近30天内的视频回放</p>
+                                         </div>
+                                    ) : (
+                                        <div className="text-center text-white/80">
+                                            {activeMedia.type === 'video' ? (
+                                                <>
+                                                    <PlayCircle size={56} className="mx-auto mb-3 opacity-80 group-hover:scale-110 transition-transform cursor-pointer hover:text-blue-400" />
+                                                    <p className="text-sm font-medium">播放视频</p>
+                                                </>
+                                            ) : (
+                                                <>
+                                                     <ImageIcon size={56} className="mx-auto mb-3 opacity-50" />
+                                                     <p className="text-sm font-medium">查看高清抓拍</p>
+                                                </>
+                                            )}
+                                        </div>
+                                    )}
                                     
                                     {/* Overlay Info */}
                                     <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1.5 rounded-md text-sm border border-white/10">

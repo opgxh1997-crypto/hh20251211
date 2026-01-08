@@ -62,9 +62,6 @@ export const TopOverview: React.FC = () => {
                     <Users size={18} className="text-indigo-500" />
                 </div>
             </div>
-            <div className="mt-2 h-1 w-full bg-slate-100 rounded-full overflow-hidden">
-                <div className="h-full bg-indigo-500 w-[92%]"></div>
-            </div>
         </div>
 
         <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
@@ -76,9 +73,6 @@ export const TopOverview: React.FC = () => {
                 <div className="p-2 bg-blue-50 rounded-lg">
                     <Activity size={18} className="text-blue-500" />
                 </div>
-            </div>
-            <div className="mt-2 h-1 w-full bg-slate-100 rounded-full overflow-hidden">
-                <div className="h-full bg-blue-500 w-3/4"></div>
             </div>
         </div>
 
@@ -92,9 +86,6 @@ export const TopOverview: React.FC = () => {
                     <CheckCircle size={18} className="text-emerald-500" />
                 </div>
             </div>
-             <div className="mt-2 h-1 w-full bg-slate-100 rounded-full overflow-hidden">
-                <div className="h-full bg-emerald-500 w-[87%]"></div>
-            </div>
         </div>
 
         <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
@@ -106,9 +97,6 @@ export const TopOverview: React.FC = () => {
                 <div className="p-2 bg-amber-50 rounded-lg">
                     <AlertTriangle size={18} className="text-amber-500" />
                 </div>
-            </div>
-             <div className="mt-2 h-1 w-full bg-slate-100 rounded-full overflow-hidden">
-                <div className="h-full bg-amber-500 w-[12%]"></div>
             </div>
         </div>
       </div>

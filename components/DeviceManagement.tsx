@@ -3,7 +3,7 @@ import {
   Server, Search, Filter, Plus, Upload, MoreHorizontal, 
   CheckCircle, XCircle, AlertTriangle, Monitor, Wifi, 
   HardDrive, Camera, Activity, History, ChevronRight, 
-  ArrowLeft, Settings, Power, Video, FileText, ChevronDown, ChevronUp, MapPin, X, CloudUpload, Image as ImageIcon
+  ArrowLeft, Settings, Power, Video, FileText, ChevronDown, ChevronUp, MapPin, X, CloudUpload, Image as ImageIcon, Database
 } from 'lucide-react';
 import { Device, DeviceStatus, OperatingRoom, WashRecord } from '../types';
 
@@ -16,20 +16,20 @@ const generateMockData = () => {
   }));
 
   const devices: Device[] = [
-    { id: 'SSJ-001', name: '术间1入口镜', roomId: 'room-1', status: DeviceStatus.ONLINE, location: '患者入口左侧', type: '智能洗手镜V2', sn: 'SN20240320001', installDate: '2024-03-20', lastActive: '2分钟前', network: 'Wi-Fi (信号强)', storageUsed: 85, storageTotal: 128, cameraStatus: 'normal', aiStatus: 'normal' },
-    { id: 'SSJ-002', name: '术间1洗手台镜', roomId: 'room-1', status: DeviceStatus.ONLINE, location: '洗手台正上方', type: '智能洗手镜V2', sn: 'SN20240320002', installDate: '2024-03-20', lastActive: '5分钟前', network: 'Wi-Fi (信号强)', storageUsed: 42, storageTotal: 128, cameraStatus: 'normal', aiStatus: 'normal' },
-    { id: 'SSJ-003', name: '术间1备用镜', roomId: 'room-1', status: DeviceStatus.OFFLINE, location: '器械台旁', type: '智能洗手镜V1', sn: 'SN20231105011', installDate: '2023-11-05', lastActive: '3天前', network: '离线', storageUsed: 110, storageTotal: 128, cameraStatus: 'normal', aiStatus: 'fault' },
-    { id: 'SSJ-004', name: '术间2主镜', roomId: 'room-2', status: DeviceStatus.ONLINE, location: '医生入口处', type: '智能洗手镜V2', sn: 'SN20240321005', installDate: '2024-03-21', lastActive: '刚刚', network: 'LAN', storageUsed: 20, storageTotal: 128, cameraStatus: 'normal', aiStatus: 'normal' },
-    { id: 'SSJ-005', name: '术间2洗手镜', roomId: 'room-2', status: DeviceStatus.ONLINE, location: '洗手池上方', type: '智能洗手镜V2', sn: 'SN20240321006', installDate: '2024-03-21', lastActive: '10分钟前', network: 'Wi-Fi', storageUsed: 55, storageTotal: 128, cameraStatus: 'normal', aiStatus: 'normal' },
-    { id: 'SSJ-006', name: '术间3主镜', roomId: 'room-3', status: DeviceStatus.FAULT, location: '术间入口', type: '智能洗手镜V2', sn: 'SN20240115088', installDate: '2024-01-15', lastActive: '1小时前', network: 'Wi-Fi', storageUsed: 90, storageTotal: 128, cameraStatus: 'fault', aiStatus: 'normal' },
-    { id: 'SSJ-007', name: '未匹配设备', roomId: 'unmatched', status: DeviceStatus.ONLINE, location: '-', type: '智能洗手镜V2', sn: 'SN20240401999', installDate: '-', lastActive: '刚刚', network: 'Wi-Fi', storageUsed: 1, storageTotal: 128, cameraStatus: 'normal', aiStatus: 'normal' },
+    { id: 'SSJ-001', name: '术间1入口镜', roomId: 'room-1', status: DeviceStatus.ONLINE, location: '患者入口左侧', type: '智能洗手镜V2', sn: 'SN20240320001', ipAddress: '192.168.10.101', installDate: '2024-03-20', lastActive: '2分钟前', network: 'Wi-Fi (信号强)', cameraStatus: 'normal', aiStatus: 'normal' },
+    { id: 'SSJ-002', name: '术间1洗手台镜', roomId: 'room-1', status: DeviceStatus.ONLINE, location: '洗手台正上方', type: '智能洗手镜V2', sn: 'SN20240320002', ipAddress: '192.168.10.102', installDate: '2024-03-20', lastActive: '5分钟前', network: 'Wi-Fi (信号强)', cameraStatus: 'normal', aiStatus: 'normal' },
+    { id: 'SSJ-003', name: '术间1备用镜', roomId: 'room-1', status: DeviceStatus.OFFLINE, location: '器械台旁', type: '智能洗手镜V1', sn: 'SN20231105011', ipAddress: '192.168.10.103', installDate: '2023-11-05', lastActive: '3天前', network: '离线', cameraStatus: 'normal', aiStatus: 'fault' },
+    { id: 'SSJ-004', name: '术间2主镜', roomId: 'room-2', status: DeviceStatus.ONLINE, location: '医生入口处', type: '智能洗手镜V2', sn: 'SN20240321005', ipAddress: '192.168.10.104', installDate: '2024-03-21', lastActive: '刚刚', network: 'LAN', cameraStatus: 'normal', aiStatus: 'normal' },
+    { id: 'SSJ-005', name: '术间2洗手镜', roomId: 'room-2', status: DeviceStatus.ONLINE, location: '洗手池上方', type: '智能洗手镜V2', sn: 'SN20240321006', ipAddress: '192.168.10.105', installDate: '2024-03-21', lastActive: '10分钟前', network: 'Wi-Fi', cameraStatus: 'normal', aiStatus: 'normal' },
+    { id: 'SSJ-006', name: '术间3主镜', roomId: 'room-3', status: DeviceStatus.FAULT, location: '术间入口', type: '智能洗手镜V2', sn: 'SN20240115088', ipAddress: '192.168.10.106', installDate: '2024-01-15', lastActive: '1小时前', network: 'Wi-Fi', cameraStatus: 'fault', aiStatus: 'normal' },
+    { id: 'SSJ-007', name: '未匹配设备', roomId: 'unmatched', status: DeviceStatus.ONLINE, location: '-', type: '智能洗手镜V2', sn: 'SN20240401999', ipAddress: '192.168.10.200', installDate: '-', lastActive: '刚刚', network: 'Wi-Fi', cameraStatus: 'normal', aiStatus: 'normal' },
   ];
   
   // Fill remaining rooms with some dummy data
   for(let i=4; i<=8; i++) {
       if(Math.random() > 0.5) {
         devices.push({
-            id: `SSJ-0${i}1`, name: `术间${i}主镜`, roomId: `room-${i}`, status: DeviceStatus.ONLINE, location: '入口处', type: '智能洗手镜V2', sn: `SN20240${i}001`, installDate: '2024-02-01', lastActive: '30分钟前', network: 'Wi-Fi', storageUsed: 30, storageTotal: 128, cameraStatus: 'normal', aiStatus: 'normal'
+            id: `SSJ-0${i}1`, name: `术间${i}主镜`, roomId: `room-${i}`, status: DeviceStatus.ONLINE, location: '入口处', type: '智能洗手镜V2', sn: `SN20240${i}001`, ipAddress: `192.168.10.${110+i}`, installDate: '2024-02-01', lastActive: '30分钟前', network: 'Wi-Fi', cameraStatus: 'normal', aiStatus: 'normal'
         })
       }
   }
@@ -86,8 +86,6 @@ export const DeviceManagement: React.FC = () => {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
 
   // Modal States
-  const [isImportOpen, setIsImportOpen] = useState(false);
-  const [isAddOpen, setIsAddOpen] = useState(false);
   const [isMatchOpen, setIsMatchOpen] = useState(false);
 
   // Computed Data
@@ -165,92 +163,6 @@ export const DeviceManagement: React.FC = () => {
     <div className="flex h-[calc(100vh-80px)] bg-slate-50 gap-4 pb-4 relative">
       {/* --- Modals --- */}
       
-      {/* 1. Import Modal */}
-      {isImportOpen && (
-        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-            <div className="bg-white rounded-xl shadow-xl w-full max-w-lg animate-in fade-in zoom-in-95 duration-200">
-                <div className="flex justify-between items-center px-6 py-4 border-b border-slate-100">
-                    <h3 className="text-lg font-bold text-slate-800">批量导入设备</h3>
-                    <button onClick={() => setIsImportOpen(false)} className="text-slate-400 hover:text-slate-700">
-                        <X size={20} />
-                    </button>
-                </div>
-                <div className="p-6">
-                    <div className="border-2 border-dashed border-slate-300 rounded-lg p-8 flex flex-col items-center justify-center text-center hover:bg-slate-50 transition-colors cursor-pointer group">
-                        <div className="bg-blue-50 p-3 rounded-full mb-3 group-hover:bg-blue-100 transition-colors">
-                            <CloudUpload size={24} className="text-blue-600" />
-                        </div>
-                        <p className="text-sm font-medium text-slate-700">点击或拖拽上传文件</p>
-                        <p className="text-xs text-slate-500 mt-1">支持 .xlsx, .csv 格式 (最大 5MB)</p>
-                    </div>
-                    <div className="mt-4 flex justify-between items-center text-sm">
-                        <a href="#" className="text-blue-600 hover:underline flex items-center">
-                            <FileText size={14} className="mr-1" /> 下载导入模版
-                        </a>
-                        <span className="text-slate-400">未选择文件</span>
-                    </div>
-                </div>
-                <div className="px-6 py-4 border-t border-slate-100 bg-slate-50 rounded-b-xl flex justify-end space-x-3">
-                    <button onClick={() => setIsImportOpen(false)} className="px-4 py-2 bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 text-sm font-medium">取消</button>
-                    <button onClick={() => setIsImportOpen(false)} className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm font-medium shadow-sm">开始导入</button>
-                </div>
-            </div>
-        </div>
-      )}
-
-      {/* 2. Add Device Modal */}
-      {isAddOpen && (
-        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-            <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl animate-in fade-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
-                <div className="flex justify-between items-center px-6 py-4 border-b border-slate-100">
-                    <h3 className="text-lg font-bold text-slate-800">新增设备</h3>
-                    <button onClick={() => setIsAddOpen(false)} className="text-slate-400 hover:text-slate-700">
-                        <X size={20} />
-                    </button>
-                </div>
-                <div className="p-6 overflow-y-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="space-y-4">
-                            <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">设备名称 <span className="text-red-500">*</span></label>
-                                <input type="text" placeholder="例如：术间1入口镜" className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">设备类型</label>
-                                <select className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                                    <option>智能洗手镜V2</option>
-                                    <option>智能洗手镜V1</option>
-                                    <option>普通监测终端</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">序列号 (SN) <span className="text-red-500">*</span></label>
-                                <input type="text" placeholder="扫码或输入SN码" className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-                            </div>
-                        </div>
-                        <div className="space-y-4">
-                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">所属手术间</label>
-                                <select className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                                    <option value="">未匹配</option>
-                                    {rooms.map(r => <option key={r.id} value={r.id}>{r.name}</option>)}
-                                </select>
-                            </div>
-                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">安装位置描述</label>
-                                <textarea placeholder="例如：患者入口左侧，距地面1.2m" rows={4} className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="px-6 py-4 border-t border-slate-100 bg-slate-50 rounded-b-xl flex justify-end space-x-3">
-                    <button onClick={() => setIsAddOpen(false)} className="px-4 py-2 bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 text-sm font-medium">取消</button>
-                    <button onClick={() => setIsAddOpen(false)} className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm font-medium shadow-sm">确认添加</button>
-                </div>
-            </div>
-        </div>
-      )}
-
       {/* 3. Match Modal */}
       {isMatchOpen && (
         <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
@@ -369,6 +281,22 @@ export const DeviceManagement: React.FC = () => {
           })}
         </div>
 
+        {/* Global Storage Status (Unified Storage) */}
+        <div className="p-4 bg-slate-50 border-t border-slate-100">
+            <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2 flex items-center">
+                <Database size={12} className="mr-1.5" /> 统一存储状态
+            </h3>
+            <div className="bg-white border border-slate-200 rounded p-2">
+                <div className="flex justify-between text-xs text-slate-600 mb-1">
+                    <span>已用</span>
+                    <span className="font-medium">2.4TB / 8TB</span>
+                </div>
+                <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-blue-500 w-[30%]"></div>
+                </div>
+            </div>
+        </div>
+
         {/* Footer Stats */}
         <div className="p-3 bg-slate-50 border-t border-slate-100 text-xs text-slate-500 space-y-1">
              <div className="flex justify-between items-center">
@@ -397,14 +325,8 @@ export const DeviceManagement: React.FC = () => {
                         <h2 className="text-lg font-bold text-slate-800">设备管理 - {activeRoomId === 'all' ? '全部手术间' : rooms.find(r => r.id === activeRoomId)?.name || '未匹配'}</h2>
                         <p className="text-xs text-slate-500 mt-1">共 {filteredDevices.length} 台设备</p>
                     </div>
-                    <div className="flex space-x-2">
-                        <button onClick={() => setIsImportOpen(true)} className="flex items-center px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50">
-                            <Upload size={14} className="mr-2" /> 批量导入
-                        </button>
-                        <button onClick={() => setIsAddOpen(true)} className="flex items-center px-3 py-1.5 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 shadow-sm">
-                            <Plus size={14} className="mr-2" /> 新增设备
-                        </button>
-                    </div>
+                    {/* Removed Import and Add buttons */}
+                    <div className="flex space-x-2"></div>
                 </div>
 
                 {/* Toolbar */}
@@ -453,6 +375,7 @@ export const DeviceManagement: React.FC = () => {
                                 </th>
                                 <th className="px-6 py-3 font-semibold border-b border-slate-200">设备ID</th>
                                 <th className="px-6 py-3 font-semibold border-b border-slate-200">设备名称</th>
+                                <th className="px-6 py-3 font-semibold border-b border-slate-200">边缘设备IP地址</th>
                                 <th className="px-6 py-3 font-semibold border-b border-slate-200">状态</th>
                                 <th className="px-6 py-3 font-semibold border-b border-slate-200">所属术间</th>
                                 <th className="px-6 py-3 font-semibold border-b border-slate-200">安装位置描述</th>
@@ -476,6 +399,7 @@ export const DeviceManagement: React.FC = () => {
                                     </td>
                                     <td className="px-6 py-4 font-mono text-slate-600">{device.id}</td>
                                     <td className="px-6 py-4 font-medium text-slate-800">{device.name}</td>
+                                    <td className="px-6 py-4 font-mono text-slate-600 text-xs">{device.ipAddress}</td>
                                     <td className="px-6 py-4"><StatusBadge status={device.status} /></td>
                                     <td className="px-6 py-4 text-slate-600">
                                         {device.roomId === 'unmatched' 
@@ -525,7 +449,7 @@ export const DeviceManagement: React.FC = () => {
 
                 <div className="flex-1 overflow-y-auto p-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                        {/* Basic Info Card */}
+                        {/* Basic Info Card - Synced with List Columns */}
                         <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                             <h3 className="font-semibold text-slate-800 mb-4 flex items-center">
                                 <Monitor size={16} className="mr-2 text-blue-500" /> 基本信息
@@ -535,18 +459,19 @@ export const DeviceManagement: React.FC = () => {
                                 <div><span className="text-slate-500 block text-xs mb-1">序列号 (SN)</span><span className="font-medium text-slate-700 font-mono">{selectedDevice.sn}</span></div>
                                 <div><span className="text-slate-500 block text-xs mb-1">安装日期</span><span className="font-medium text-slate-700">{selectedDevice.installDate}</span></div>
                                 <div><span className="text-slate-500 block text-xs mb-1">安装位置</span><span className="font-medium text-slate-700">{selectedDevice.location}</span></div>
+                                <div><span className="text-slate-500 block text-xs mb-1">边缘设备IP</span><span className="font-medium text-slate-700 font-mono">{selectedDevice.ipAddress}</span></div>
                                 <div className="col-span-2 pt-2 border-t border-slate-100 mt-2">
                                      <button className="text-blue-600 text-xs font-medium hover:underline">修改匹配信息</button>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Status Card */}
+                        {/* Status Card - Only Network and Camera */}
                         <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                             <h3 className="font-semibold text-slate-800 mb-4 flex items-center">
                                 <Activity size={16} className="mr-2 text-emerald-500" /> 运行状态
                             </h3>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 gap-4">
                                 <div className="bg-slate-50 p-3 rounded-lg flex items-start space-x-3">
                                     <Wifi size={18} className="text-blue-500 mt-0.5" />
                                     <div>
@@ -555,32 +480,11 @@ export const DeviceManagement: React.FC = () => {
                                     </div>
                                 </div>
                                 <div className="bg-slate-50 p-3 rounded-lg flex items-start space-x-3">
-                                    <HardDrive size={18} className="text-purple-500 mt-0.5" />
-                                    <div className="w-full">
-                                        <div className="flex justify-between text-xs text-slate-500 mb-1">
-                                            <span>存储</span>
-                                            <span>{selectedDevice.storageUsed}G/{selectedDevice.storageTotal}G</span>
-                                        </div>
-                                        <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
-                                            <div style={{ width: `${(selectedDevice.storageUsed/selectedDevice.storageTotal)*100}%`}} className="h-full bg-purple-500 rounded-full"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="bg-slate-50 p-3 rounded-lg flex items-start space-x-3">
                                     <Camera size={18} className={selectedDevice.cameraStatus === 'normal' ? 'text-emerald-500 mt-0.5' : 'text-red-500 mt-0.5'} />
                                     <div>
                                         <div className="text-xs text-slate-500">摄像头</div>
                                         <div className={`font-medium text-sm ${selectedDevice.cameraStatus === 'normal' ? 'text-emerald-600' : 'text-red-600'}`}>
                                             {selectedDevice.cameraStatus === 'normal' ? '正常工作' : '异常'}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="bg-slate-50 p-3 rounded-lg flex items-start space-x-3">
-                                    <Activity size={18} className={selectedDevice.aiStatus === 'normal' ? 'text-indigo-500 mt-0.5' : 'text-red-500 mt-0.5'} />
-                                    <div>
-                                        <div className="text-xs text-slate-500">AI识别模块</div>
-                                        <div className={`font-medium text-sm ${selectedDevice.aiStatus === 'normal' ? 'text-indigo-600' : 'text-red-600'}`}>
-                                            {selectedDevice.aiStatus === 'normal' ? '运行中' : '故障'}
                                         </div>
                                     </div>
                                 </div>
@@ -655,10 +559,11 @@ export const DeviceManagement: React.FC = () => {
                             <tr>
                                 <th className="px-6 py-3 font-semibold border-b border-slate-200">时间</th>
                                 <th className="px-6 py-3 font-semibold border-b border-slate-200">人员</th>
+                                {/* Removed Role Column */}
                                 <th className="px-6 py-3 font-semibold border-b border-slate-200">洗手时长</th>
                                 <th className="px-6 py-3 font-semibold border-b border-slate-200">结果</th>
                                 <th className="px-6 py-3 font-semibold border-b border-slate-200">预警原因</th>
-                                <th className="px-6 py-3 font-semibold border-b border-slate-200 text-right">证据</th>
+                                <th className="px-6 py-3 font-semibold border-b border-slate-200 text-right">视频</th> {/* Changed header to Video */}
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-100">
@@ -667,7 +572,7 @@ export const DeviceManagement: React.FC = () => {
                                     <td className="px-6 py-4 font-mono text-slate-600">{record.timestamp}</td>
                                     <td className="px-6 py-4">
                                         <div className="font-medium text-slate-800">{record.personName}</div>
-                                        <div className="text-xs text-slate-500">{record.role}</div>
+                                        {/* Removed Role Display */}
                                     </td>
                                     <td className="px-6 py-4 text-slate-700">{record.duration}秒</td>
                                     <td className="px-6 py-4">

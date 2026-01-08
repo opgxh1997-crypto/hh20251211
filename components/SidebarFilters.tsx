@@ -52,21 +52,6 @@ export const SidebarFilters: React.FC = () => {
             </div>
         </div>
       </div>
-
-      {/* Roles */}
-      <div>
-         <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 flex items-center">
-            <Users size={14} className="mr-2" /> 人员角色
-        </h3>
-        <div className="space-y-2">
-            {Object.values(Role).map(role => (
-                <label key={role} className="flex items-center space-x-3 cursor-pointer group">
-                    <input type="checkbox" defaultChecked className="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500" />
-                    <span className="text-sm text-slate-600 group-hover:text-slate-900 transition-colors">{role}</span>
-                </label>
-            ))}
-        </div>
-      </div>
     </div>
   );
 };

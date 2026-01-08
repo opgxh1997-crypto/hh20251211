@@ -20,8 +20,8 @@ const App: React.FC = () => {
              <ShieldCheck className="text-white h-6 w-6" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-slate-800 tracking-tight">手卫生 <span className="text-blue-600">统计分析平台</span></h1>
-            <p className="text-xs text-slate-500 font-medium">院感管理视图 (Infection Control)</p>
+            <h1 className="text-xl font-bold text-slate-800 tracking-tight">手卫生管理端</h1>
+            <p className="text-xs text-slate-500 font-medium">Infection Control Management</p>
           </div>
         </div>
         

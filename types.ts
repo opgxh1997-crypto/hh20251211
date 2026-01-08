@@ -20,7 +20,7 @@ export interface Alert {
   timestamp: string;
   staffName: string;
   department: string;
-  issueType: '手部有配饰' | '时长不足' | '步骤缺失';
+  issueType: string; // Changed from union to string to support multiple issues
   severity: 'high' | 'medium' | 'low';
 }
 
@@ -65,11 +65,13 @@ export interface Device {
   location: string;
   type: string;
   sn: string;
+  ipAddress: string; // Added IP Address
   installDate: string;
   lastActive: string;
   network: string;
-  storageUsed: number; // GB
-  storageTotal: number; // GB
+  // storage fields removed from individual device since it is unified, but keeping in type if needed for legacy or mock, 
+  // will effectively ignore or repurpose if needed. 
+  // However, prompts says "Unified storage", so I won't display per-device storage.
   cameraStatus: 'normal' | 'fault';
   aiStatus: 'normal' | 'fault';
 }

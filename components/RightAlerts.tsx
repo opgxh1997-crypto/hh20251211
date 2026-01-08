@@ -5,8 +5,10 @@ import { Alert } from '../types';
 const alerts: Alert[] = [
     { id: '1', timestamp: '10:41 AM', staffName: '张志远', department: '普外科', issueType: '手部有配饰', severity: 'high' },
     { id: '2', timestamp: '10:38 AM', staffName: '李晓雯', department: '胸外科', issueType: '时长不足', severity: 'medium' },
-    { id: '3', timestamp: '10:35 AM', staffName: '王建国', department: '泌尿外科', issueType: '步骤缺失', severity: 'medium' },
-    { id: '4', timestamp: '10:30 AM', staffName: '赵雅芝', department: '骨科', issueType: '手部有配饰', severity: 'high' },
+    // Multiple issues example
+    { id: '3', timestamp: '10:35 AM', staffName: '王建国', department: '泌尿外科', issueType: '时长不足、步骤缺失', severity: 'high' },
+    // Another multiple issues example
+    { id: '4', timestamp: '10:30 AM', staffName: '赵雅芝', department: '骨科', issueType: '手部有配饰、未用洗手液', severity: 'high' },
     { id: '5', timestamp: '10:15 AM', staffName: '刘志坚', department: '肝胆外科', issueType: '手部有配饰', severity: 'low' },
 ];
 
